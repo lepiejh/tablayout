@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="XTabLayout">
+        <attr format="boolean" name="x_tabIndicatorRoundRect"/>
+        <attr format="boolean" name="x_tabIndicatorAnimation"/>
+        <attr format="color" name="x_tabIndicatorColor"/>
+        <attr format="dimension" name="x_tabIndicatorHeight"/>
+        <attr format="dimension" name="x_tabIndicatorWidth"/>
+        <attr format="dimension" name="x_tabIndicatorRoundX"/>
+        <attr format="dimension" name="x_tabContentStart"/>
+        <attr format="reference" name="x_tabBackground"/>
+        <attr name="x_tabMode">
+            <enum name="scrollable" value="0"/>
+            <enum name="fixed" value="1"/>
+        </attr>
+        <attr name="x_tabGravity">
+            <enum name="fill" value="0"/>
+            <enum name="center" value="1"/>
+        </attr>
+        <attr format="dimension" name="x_tabMinWidth"/>
+        <attr format="dimension" name="x_tabMaxWidth"/>
+        <attr format="reference" name="x_tabTextAppearance"/>
+        <attr format="color" name="x_tabTextColor"/>
+        <attr format="dimension" name="x_tabTextSize"/>
+        <attr format="color" name="x_tabSelectedTextColor"/>
+        <attr format="dimension" name="x_tabPaddingStart"/>
+        <attr format="dimension" name="x_tabPaddingTop"/>
+        <attr format="dimension" name="x_tabPaddingEnd"/>
+        <attr format="dimension" name="x_tabPaddingBottom"/>
+        <attr format="dimension" name="x_tabPadding"/>
+        <attr format="dimension" name="x_indicatorMarginTop"/>
+    </declare-styleable>
+    <declare-styleable name="XTabItem">
+        <attr name="android:text"/>
+        <attr name="android:icon"/>
+        <attr name="android:layout"/>
+    </declare-styleable>
+</resources>
