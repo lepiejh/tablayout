@@ -11,10 +11,10 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
     }
-    buildFeatures{
+    /*buildFeatures{
         //noinspection DataBindingWithoutKapt
         dataBinding = true
-    }
+    }*/
     buildTypes {
 
         debug {
