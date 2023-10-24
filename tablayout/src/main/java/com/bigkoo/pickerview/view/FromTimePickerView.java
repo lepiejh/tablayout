@@ -16,7 +16,6 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 /**
@@ -24,13 +23,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
  * Created by Sai on 15/11/22.
  * Updated by XiaoSong on 2017-2-22.
  */
-public class TimePickerView extends BasePickerView implements View.OnClickListener {
+public class FromTimePickerView extends BasePickerView implements View.OnClickListener {
 
     private WheelTime wheelTime; //自定义控件
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
 
-    public TimePickerView(PickerOptions pickerOptions) {
+    public FromTimePickerView(PickerOptions pickerOptions) {
         super(pickerOptions.context);
         mPickerOptions = pickerOptions;
         initView(pickerOptions.context);
@@ -42,15 +41,15 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         initAnim();
 
         if (mPickerOptions.customListener == null) {
-            LayoutInflater.from(context).inflate(R.layout.pickerview_time, contentContainer);
+            LayoutInflater.from(context).inflate(R.layout.from_pickerview_time, contentContainer);
 
             //顶部标题
-//            TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
-//            ConstraintLayout rv_top_bar = (ConstraintLayout) findViewById(R.id.rv_topbar);
+            TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
+            RelativeLayout rv_top_bar = (RelativeLayout) findViewById(R.id.rv_topbar);
 
             //确定和取消按钮
-            AppCompatTextView btnSubmit = (AppCompatTextView) findViewById(R.id.btnSubmit);
-            AppCompatTextView btnCancel = (AppCompatTextView) findViewById(R.id.btnCancel);
+            Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
+            Button btnCancel = (Button) findViewById(R.id.btnCancel);
 
             btnSubmit.setTag(TAG_SUBMIT);
             btnCancel.setTag(TAG_CANCEL);
@@ -61,7 +60,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             //设置文字
             btnSubmit.setText(TextUtils.isEmpty(mPickerOptions.textContentConfirm) ? context.getResources().getString(R.string.pickerview_submit) : mPickerOptions.textContentConfirm);
             btnCancel.setText(TextUtils.isEmpty(mPickerOptions.textContentCancel) ? context.getResources().getString(R.string.pickerview_cancel) : mPickerOptions.textContentCancel);
-//            tvTitle.setText(TextUtils.isEmpty(mPickerOptions.textContentTitle) ? "" : mPickerOptions.textContentTitle);//默认为空
+            tvTitle.setText(TextUtils.isEmpty(mPickerOptions.textContentTitle) ? "" : mPickerOptions.textContentTitle);//默认为空
 
             TextView tv_year = (TextView) findViewById(R.id.tv_year);
             TextView tv_month = (TextView) findViewById(R.id.tv_month);
@@ -81,13 +80,13 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             //设置color
             btnSubmit.setTextColor(mPickerOptions.textColorConfirm);
             btnCancel.setTextColor(mPickerOptions.textColorCancel);
-//            tvTitle.setTextColor(mPickerOptions.textColorTitle);
-//            rv_top_bar.setBackgroundColor(mPickerOptions.bgColorTitle);
+            tvTitle.setTextColor(mPickerOptions.textColorTitle);
+            rv_top_bar.setBackgroundColor(mPickerOptions.bgColorTitle);
 
             //设置文字大小
             btnSubmit.setTextSize(mPickerOptions.textSizeSubmitCancel);
             btnCancel.setTextSize(mPickerOptions.textSizeSubmitCancel);
-//            tvTitle.setTextSize(mPickerOptions.textSizeTitle);
+            tvTitle.setTextSize(mPickerOptions.textSizeTitle);
 
         } else {
             mPickerOptions.customListener.customLayout(LayoutInflater.from(context).inflate(mPickerOptions.layoutRes, contentContainer));
