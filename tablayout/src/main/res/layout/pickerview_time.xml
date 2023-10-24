@@ -10,6 +10,7 @@
         android:id="@+id/timepicker"
         android:layout_width="match_parent"
         android:layout_height="160dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/white"
         android:minHeight="160dp">
 
