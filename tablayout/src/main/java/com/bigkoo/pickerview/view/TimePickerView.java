@@ -12,6 +12,7 @@ import com.androidkun.xtablayout.R;
 import com.bigkoo.pickerview.configure.PickerOptions;
 import com.bigkoo.pickerview.listener.ISelectTimeCallback;
 import com.ved.framework.utils.KLog;
+import com.ved.framework.utils.StringUtils;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -246,11 +247,44 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         dismiss();
     }
 
+    public String parseToData(String s){
+        String[] a = s.split(" ");
+        String a1 = a[0];
+        String a2 = a[1];
+        String[] b = a1.split("-");
+        String b1 = b[0];
+        String b2 = b[1];
+        String b3 = b[2];
+        String[] c = a2.split(":");
+        String c1 = c[0];
+        String c2 = c[1];
+        String c3 = c[2];
+        return intToString(b1)+"-"+intToString(b2)+"-"+intToString(b3)+" "+intToString(c1)+":"+intToString(c2)+":"+intToString(c3);
+    }
+
+    public String intToString(String s){
+        int a = StringUtils.parseInt(s);
+        if (a < 10){
+            return "0"+a;
+        }else {
+            return StringUtils.parseStr(a);
+        }
+    }
+
     public void returnData() {
         if (mPickerOptions.timeSelectListener != null) {
             try {
                 KLog.i("TimePickerBuilder","wheelTime.getTime() : "+wheelTime.getTime());
-                Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
+                String t = wheelTime.getTime();
+                String d;
+                try {
+                    d = parseToData(t);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    d = t;
+                }
+                KLog.i("TimePickerBuilder","wheelTime.getTime() d : "+d);
+                Date date = WheelTime.dateFormat.parse(d);
                 mPickerOptions.timeSelectListener.onTimeSelect(date, clickView);
             } catch (ParseException e) {
                 e.printStackTrace();
