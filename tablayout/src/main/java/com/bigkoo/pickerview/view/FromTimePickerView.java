@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.androidkun.xtablayout.R;
 import com.bigkoo.pickerview.configure.PickerOptions;
 import com.bigkoo.pickerview.listener.ISelectTimeCallback;
+import com.bigkoo.pickerview.utils.StringUtils;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -247,8 +248,16 @@ public class FromTimePickerView extends BasePickerView implements View.OnClickLi
     public void returnData() {
         if (mPickerOptions.timeSelectListener != null) {
             try {
-                Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
-                mPickerOptions.timeSelectListener.onTimeSelect(date, clickView);
+                String t = wheelTime.getTime();
+                String d;
+                try {
+                    d = StringUtils.parseToData(t);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    d = t;
+                }
+                Date date = WheelTime.dateFormat.parse(d);
+                mPickerOptions.timeSelectListener.onTimeSelect(d,date, clickView);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
