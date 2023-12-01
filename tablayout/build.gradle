@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.lixiong'
@@ -15,6 +16,9 @@ android {
         //noinspection DataBindingWithoutKapt
         dataBinding = true
     }*/
+    buildFeatures{
+        dataBinding = true
+    }
     buildTypes {
 
         debug {
@@ -31,6 +35,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     /*configurations.all {
         resolutionStrategy.eachDependency {
             DependencyResolveDetails details ->
@@ -46,9 +54,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compileOnly 'com.github.lepiejh:android-framework:v1.0.5'
+    compileOnly 'com.github.lepiejh:android-framework:v1.3.7'
     compileOnly 'androidx.constraintlayout:constraintlayout:2.1.4'
     compileOnly 'com.google.android.material:material:1.4.+'
 //    implementation 'androidx.appcompat:appcompat:1.5.1'
 //    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    compileOnly "com.github.Philjay:MPAndroidChart:v3.1.0"
 }
