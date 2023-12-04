@@ -22,41 +22,46 @@ object ViewAdapter {
     @BindingAdapter("ingestion_reference_type")
     @JvmStatic
     fun AppCompatTextView.a(s: String?) {
-        when(s){
-            "EAR" ->{
-                text = "平均需要量"
+        try {
+            when(s){
+                "EAR" ->{
+                    text = "平均需要量"
+                }
+                "RNI" ->{
+                    text = "推荐摄入量"
+                }
+                "AI" ->{
+                    text = "适宜摄入量"
+                }
+                "UL" ->{
+                    text = "可耐受最高摄入量"
+                }
+                "AMDR" ->{
+                    text = "宏量营养素可接受范围"
+                }
+                "PI" ->{
+                    text = "建议摄入量"
+                }
+                else ->{
+                    text = "特定建议值"
+                }
             }
-            "RNI" ->{
-                text = "推荐摄入量"
-            }
-            "AI" ->{
-                text = "适宜摄入量"
-            }
-            "UL" ->{
-                text = "可耐受最高摄入量"
-            }
-            "AMDR" ->{
-                text = "宏量营养素可接受范围"
-            }
-            "PI" ->{
-                text = "建议摄入量"
-            }
-            else ->{
-                text = "特定建议值"
-            }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("html_text")
     @JvmStatic
     fun HtmlTextView.b(s: String?) {
-        s?.replace("http://", "https://")?.let {
-            setHtml(
-                it,
-                HtmlHttpImageGetter(this)
-            )
+        try {
+            s?.replace("http://", "https://")?.let {
+                setHtml(
+                    it,
+                    HtmlHttpImageGetter(this)
+                )
+            }
+        } catch (_: Exception) {
         }
-
     }
 
     @BindingAdapter(
@@ -65,12 +70,15 @@ object ViewAdapter {
     )
     @JvmStatic
     fun MyJzvdStd.c(s: String?, b: String?) {
-        setUp(b,"")
-        positionInList = 1
-        if (s?.isNotEmpty() == true) {
-            Glide.with(posterImageView.context)
-                .load(s)
-                .into(posterImageView)
+        try {
+            setUp(b,"")
+            positionInList = 1
+            if (s?.isNotEmpty() == true) {
+                Glide.with(posterImageView.context)
+                    .load(s)
+                    .into(posterImageView)
+            }
+        } catch (_: Exception) {
         }
     }
 
@@ -80,8 +88,11 @@ object ViewAdapter {
     )
     @JvmStatic
     fun IView.d(s: String?, b: String?) {
-        setLeftValue(s)
-        setRightValue(b)
+        try {
+            setLeftValue(s)
+            setRightValue(b)
+        } catch (_: Exception) {
+        }
     }
 
     @BindingAdapter(
@@ -90,9 +101,12 @@ object ViewAdapter {
     )
     @JvmStatic
     fun IView.e(s: Int?, b: String?) {
-        s?.toFloat()?.let { setCurrentProgress(it) }
-        if (b != null) {
-            setText(b)
+        try {
+            s?.toFloat()?.let { setCurrentProgress(it) }
+            if (b != null) {
+                setText(b)
+            }
+        } catch (_: Exception) {
         }
     }
 
@@ -102,14 +116,17 @@ object ViewAdapter {
     )
     @JvmStatic
     fun LineChart.f(hasWeek: Int?, hasBubble:Int?) {
-        if (hasBubble == View.GONE || hasBubble == View.INVISIBLE){
-            hasWeek?.let {
-                visibility = it
+        try {
+            if (hasBubble == View.GONE || hasBubble == View.INVISIBLE){
+                hasWeek?.let {
+                    visibility = it
+                }
+            }else{
+                hasBubble?.let {
+                    visibility = View.GONE
+                }
             }
-        }else{
-            hasBubble?.let {
-                visibility = View.GONE
-            }
+        } catch (_: Exception) {
         }
     }
 
@@ -119,7 +136,10 @@ object ViewAdapter {
     )
     @JvmStatic
     fun IVGroup.g(avg: String?, proportion:String?, fluctuate:String?, reachts:String?, high:String?, low:String?, normal:String?) {
-        loadData(avg,proportion,fluctuate,reachts,high,low,normal)
+        try {
+            loadData(avg,proportion,fluctuate,reachts,high,low,normal)
+        } catch (_: Exception) {
+        }
     }
 
     @BindingAdapter(
@@ -128,19 +148,28 @@ object ViewAdapter {
     )
     @JvmStatic
     fun IVGroup.h(sleepLength: String?, lieinbedLength:String?) {
-        loadData(sleepLength, lieinbedLength)
+        try {
+            loadData(sleepLength, lieinbedLength)
+        } catch (_: Exception) {
+        }
     }
 
     @BindingAdapter("fat_values")
     @JvmStatic
     fun IVGroup.i(fat: String?) {
-        loadData(fat)
+        try {
+            loadData(fat)
+        } catch (_: Exception) {
+        }
     }
 
     @BindingAdapter("diet_values")
     @JvmStatic
     fun IVGroup.j(diet: String?) {
-        loadData(diet)
+        try {
+            loadData(diet)
+        } catch (_: Exception) {
+        }
     }
 
     @BindingAdapter(
@@ -149,140 +178,173 @@ object ViewAdapter {
     )
     @JvmStatic
     fun AppCompatTextView.k(value:String?,unit: String?) {
-        value?.let {
-            text = if (it.isNotEmpty()){
-                if (it == "--"){
+        try {
+            value?.let {
+                text = if (it.isNotEmpty()){
+                    if (it == "--"){
+                        ""
+                    }else{
+                        unit
+                    }
+                } else {
                     ""
-                }else{
-                    unit
                 }
-            } else {
-                ""
+            }?: kotlin.run {
+                text = ""
             }
-        }?: kotlin.run {
-            text = ""
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("card_weight")
     @JvmStatic
     fun AppCompatTextView.l(weight: String?) {
-        weight?.let {
-            text = if (it.isNotEmpty()){
-                weight
-            }else{
-                "--"
+        try {
+            weight?.let {
+                text = if (it.isNotEmpty()){
+                    weight
+                }else{
+                    "--"
+                }
+            }?: kotlin.run {
+                text = "--"
             }
-        }?: kotlin.run {
-            text = "--"
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("plan_text_01")
     @JvmStatic
     fun AppCompatTextView.m(t: String?) {
-        t?.let {
-            text = if (t.length >= 16){
-                t.substring(0,16)
-            }else{
-                t
+        try {
+            t?.let {
+                text = if (t.length >= 16){
+                    t.substring(0,16)
+                }else{
+                    t
+                }
             }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("plan_text_02")
     @JvmStatic
     fun AppCompatTextView.n(t: String?) {
-        t?.let {
-            text = if (t.length >= 34){
-                t.substring(16,34)
-            }else if (t.length >= 16){
-                t.subSequence(16,t.length)
-            }else{
-                ""
+        try {
+            t?.let {
+                text = if (t.length >= 34){
+                    t.substring(16,34)
+                }else if (t.length >= 16){
+                    t.subSequence(16,t.length)
+                }else{
+                    ""
+                }
             }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("plan_text_03")
     @JvmStatic
     fun AppCompatTextView.k(t: String?) {
-        t?.let {
-            text = if (t.length >= 53){
-                t.substring(34,53)
-            }else if (t.length >= 34){
-                t.substring(34,t.length)
-            }else{
-                ""
+        try {
+            t?.let {
+                text = if (t.length >= 53){
+                    t.substring(34,53)
+                }else if (t.length >= 34){
+                    t.substring(34,t.length)
+                }else{
+                    ""
+                }
             }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("plan_text_04")
     @JvmStatic
     fun AppCompatTextView.r(t: String?) {
-        t?.let {
-            text = if (t.length >= 53){
-                t.substring(53,t.length)
-            }else{
-                ""
+        try {
+            t?.let {
+                text = if (t.length >= 53){
+                    t.substring(53,t.length)
+                }else{
+                    ""
+                }
             }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("plan_problem_01")
     @JvmStatic
     fun AppCompatTextView.u(t: String?) {
-        t?.let {
-            text = t.substring(0,1)
+        try {
+            t?.let {
+                text = t.substring(0,1)
+            }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("plan_problem_02")
     @JvmStatic
     fun AppCompatTextView.y(t: String?) {
-        t?.let {
-            text = t.substring(1,t.length)
+        try {
+            t?.let {
+                text = t.substring(1,t.length)
+            }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("plan_price")
     @JvmStatic
     fun AppCompatTextView.t(t: String?) {
-        t?.let {
-            val s = "¥${it}"
-            val sp = SpannableString(s)
-            sp.setSpan(StrikethroughSpan(),0,s.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            text = sp
+        try {
+            t?.let {
+                val s = "¥${it}"
+                val sp = SpannableString(s)
+                sp.setSpan(StrikethroughSpan(),0,s.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                text = sp
+            }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("width_run_progress")
     @JvmStatic
     fun View.w(t: Int?) {
-        t?.let {
-            val w = ScreenUtils.getScreenWidth(Utils.getContext())-DpiUtils.dip2px(Utils.getContext(),52)
-            val w1 = w*t/100
-            val lp: ViewGroup.LayoutParams = layoutParams
-            lp.width = w1
-            layoutParams = lp
+        try {
+            t?.let {
+                val w = ScreenUtils.getScreenWidth(Utils.getContext())-DpiUtils.dip2px(Utils.getContext(),52)
+                val w1 = w*t/100
+                val lp: ViewGroup.LayoutParams = layoutParams
+                lp.width = w1
+                layoutParams = lp
+            }
+        } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("left_run_progress")
     @JvmStatic
     fun View.q(t: Int?) {
-        t?.let {
-            if (it == 0){
-                visibility = View.GONE
-            }else{
-                visibility = View.VISIBLE
-                val w = ScreenUtils.getScreenWidth(Utils.getContext())-DpiUtils.dip2px(Utils.getContext(),52)
-                val w1 = w*it/100-DpiUtils.dip2px(Utils.getContext(),20)
-                val layoutParams = layoutParams as ViewGroup.MarginLayoutParams
-                layoutParams.setMargins(w1,0,0,0)
-                setLayoutParams(layoutParams)
+        try {
+            t?.let {
+                if (it == 0){
+                    visibility = View.GONE
+                }else{
+                    visibility = View.VISIBLE
+                    val w = ScreenUtils.getScreenWidth(Utils.getContext())-DpiUtils.dip2px(Utils.getContext(),52)
+                    val w1 = w*it/100-DpiUtils.dip2px(Utils.getContext(),20)
+                    val layoutParams = layoutParams as ViewGroup.MarginLayoutParams
+                    layoutParams.setMargins(w1,0,0,0)
+                    setLayoutParams(layoutParams)
+                }
             }
+        } catch (_: Exception) {
         }
     }
 }
