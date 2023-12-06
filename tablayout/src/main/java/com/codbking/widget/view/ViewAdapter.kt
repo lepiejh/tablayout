@@ -12,9 +12,11 @@ import cn.jzvd.IView
 import cn.jzvd.MyJzvdStd
 import com.bumptech.glide.Glide
 import com.github.mikephil.charting.charts.LineChart
+import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
 import com.ved.framework.utils.ScreenUtils
 import com.ved.framework.utils.Utils
+import com.zkk.view.rulerview.RulerView
 import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
@@ -343,6 +345,66 @@ object ViewAdapter {
                     layoutParams.setMargins(w1,0,0,0)
                     setLayoutParams(layoutParams)
                 }
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter(
+        value = ["rule_min_value", "rule_max_value","rule_grid_value","rule_value"],
+        requireAll = false
+    )
+    @JvmStatic
+    fun RulerView.ab(a: String?, b:String?, g:String?, v:String?) {
+        try {
+            setValue(v?.let {
+                if (it.isNotEmpty()){
+                    it.toFloat()
+                }else{
+                    60f
+                }
+            }?: kotlin.run {
+                60f
+            }, a?.let {
+                if (it.isNotEmpty()){
+                    it.toFloat()
+                }else{
+                    0f
+                }
+            }?: kotlin.run {
+                0f
+            }, b?.let {
+                if (it.isNotEmpty()){
+                    it.toFloat()
+                }else{
+                    200f
+                }
+            }?: kotlin.run {
+                200f
+            }, g?.let {
+                if (it.isNotEmpty()){
+                    it.toFloat()/10f
+                }else{
+                    0.1f
+                }
+            }?: kotlin.run {
+                0.1f
+            })
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter(
+        value = ["onValueChangeCommand"],
+        requireAll = false
+    )
+    @JvmStatic
+    fun RulerView.ac(
+        a: BindingCommand<String?>?
+    ) {
+        try {
+            setOnValueChangeListener{
+                a?.execute(it.toString())
             }
         } catch (_: Exception) {
         }
