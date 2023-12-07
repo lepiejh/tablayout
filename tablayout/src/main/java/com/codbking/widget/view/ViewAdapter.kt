@@ -5,7 +5,7 @@ import android.text.Spanned
 import android.text.style.StrikethroughSpan
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatTextView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import cn.jzvd.IVGroup
 import cn.jzvd.IView
@@ -23,7 +23,7 @@ import org.sufficientlysecure.htmltextview.HtmlTextView
 object ViewAdapter {
     @BindingAdapter("ingestion_reference_type")
     @JvmStatic
-    fun AppCompatTextView.a(s: String?) {
+    fun TextView.a(s: String?) {
         try {
             when(s){
                 "EAR" ->{
@@ -179,7 +179,7 @@ object ViewAdapter {
         requireAll = false
     )
     @JvmStatic
-    fun AppCompatTextView.k(value:String?,unit: String?) {
+    fun TextView.k(value:String?,unit: String?) {
         try {
             value?.let {
                 text = if (it.isNotEmpty()){
@@ -200,7 +200,7 @@ object ViewAdapter {
 
     @BindingAdapter("card_weight")
     @JvmStatic
-    fun AppCompatTextView.l(weight: String?) {
+    fun TextView.l(weight: String?) {
         try {
             weight?.let {
                 text = if (it.isNotEmpty()){
@@ -217,7 +217,7 @@ object ViewAdapter {
 
     @BindingAdapter("plan_text_01")
     @JvmStatic
-    fun AppCompatTextView.m(t: String?) {
+    fun TextView.m(t: String?) {
         try {
             t?.let {
                 text = if (t.length >= 16){
@@ -232,7 +232,7 @@ object ViewAdapter {
 
     @BindingAdapter("plan_text_02")
     @JvmStatic
-    fun AppCompatTextView.n(t: String?) {
+    fun TextView.n(t: String?) {
         try {
             t?.let {
                 text = if (t.length >= 34){
@@ -249,7 +249,7 @@ object ViewAdapter {
 
     @BindingAdapter("plan_text_03")
     @JvmStatic
-    fun AppCompatTextView.k(t: String?) {
+    fun TextView.k(t: String?) {
         try {
             t?.let {
                 text = if (t.length >= 53){
@@ -266,7 +266,7 @@ object ViewAdapter {
 
     @BindingAdapter("plan_text_04")
     @JvmStatic
-    fun AppCompatTextView.r(t: String?) {
+    fun TextView.r(t: String?) {
         try {
             t?.let {
                 text = if (t.length >= 53){
@@ -281,7 +281,7 @@ object ViewAdapter {
 
     @BindingAdapter("plan_problem_01")
     @JvmStatic
-    fun AppCompatTextView.u(t: String?) {
+    fun TextView.u(t: String?) {
         try {
             t?.let {
                 text = t.substring(0,1)
@@ -292,7 +292,7 @@ object ViewAdapter {
 
     @BindingAdapter("plan_problem_02")
     @JvmStatic
-    fun AppCompatTextView.y(t: String?) {
+    fun TextView.y(t: String?) {
         try {
             t?.let {
                 text = t.substring(1,t.length)
@@ -303,7 +303,7 @@ object ViewAdapter {
 
     @BindingAdapter("plan_price")
     @JvmStatic
-    fun AppCompatTextView.t(t: String?) {
+    fun TextView.t(t: String?) {
         try {
             t?.let {
                 val s = "¥${it}"
@@ -405,6 +405,24 @@ object ViewAdapter {
         try {
             setOnValueChangeListener{
                 a?.execute(it.toString())
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter(
+        value = ["text_value", "text_default_value"],
+        requireAll = false
+    )
+    @JvmStatic
+    fun TextView.ad(a: String?, b: String?) {
+        try {
+            a?.let {
+                text = a.ifEmpty {
+                    b
+                }
+            }?: kotlin.run {
+                text = b
             }
         } catch (_: Exception) {
         }
