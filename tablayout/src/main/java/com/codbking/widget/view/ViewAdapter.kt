@@ -418,11 +418,28 @@ object ViewAdapter {
     fun TextView.ad(a: String?, b: String?) {
         try {
             a?.let {
-                text = a.ifEmpty {
+                text = it.ifEmpty {
                     b
                 }
             }?: kotlin.run {
                 text = b
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter("text_length")
+    @JvmStatic
+    fun TextView.ae(t: String?) {
+        try {
+            t?.let {
+                text = if (it.isNotEmpty()){
+                    "${it.length}"
+                }else{
+                    "0"
+                }
+            }?: kotlin.run {
+                text = "0"
             }
         } catch (_: Exception) {
         }
