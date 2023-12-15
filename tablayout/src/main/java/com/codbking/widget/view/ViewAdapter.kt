@@ -183,11 +183,7 @@ object ViewAdapter {
         try {
             value?.let {
                 text = if (it.isNotEmpty()){
-                    if (it == "--"){
-                        ""
-                    }else{
-                        unit
-                    }
+                    unit
                 } else {
                     ""
                 }
