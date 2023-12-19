@@ -5,6 +5,7 @@ import android.text.Spanned
 import android.text.style.StrikethroughSpan
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import cn.jzvd.IVGroup
@@ -62,6 +63,23 @@ object ViewAdapter {
                     HtmlHttpImageGetter(this)
                 )
             }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter("web_html_text")
+    @JvmStatic
+    fun WebView.b(s: String?) {
+        try {
+            loadDataWithBaseURL(null, "<html>" + "<head>" +
+                    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"> " +
+                    "<style>img{display: block; width:100%; height:auto;}" +
+                    "video{ width:100%; height:auto;}" +
+                    "html, body {margin: 0px;padding: 0px;}" +
+                    "p{color:#666666;font-size: 14px!important;word-break: break-word;}" +
+                    "span{color: #666;font-size: 14px!important;}" +
+                    "</style>" +
+                    "</head>" + "<body style:'height:auto; width:100%;'>" + s + "</body></html>", "text/html", "UTF-8", null)
         } catch (_: Exception) {
         }
     }
