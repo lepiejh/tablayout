@@ -17,9 +17,11 @@ import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
 import com.ved.framework.utils.ScreenUtils
 import com.ved.framework.utils.Utils
+import com.ved.framework.utils.bland.code.StringUtils
 import com.zkk.view.rulerview.RulerView
 import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter
 import org.sufficientlysecure.htmltextview.HtmlTextView
+import kotlin.math.roundToInt
 
 object ViewAdapter {
     @BindingAdapter("ingestion_reference_type")
@@ -437,6 +439,30 @@ object ViewAdapter {
                 }
             }?: kotlin.run {
                 text = b
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter(
+        value = ["float_to_int", "format_to_string"],
+        requireAll = false
+    )
+    @JvmStatic
+    fun TextView.bd(a: String?, b: String?) {
+        try {
+            text = if (b?.isNotEmpty() == true) {
+                if (a?.isNotEmpty() == true){
+                    StringUtils.format(b, a.toDouble().roundToInt().toString())
+                }else{
+                    StringUtils.format(b, "0")
+                }
+            }else{
+                if (a?.isNotEmpty() == true){
+                    a.toDouble().roundToInt().toString()
+                }else{
+                    "0"
+                }
             }
         } catch (_: Exception) {
         }
