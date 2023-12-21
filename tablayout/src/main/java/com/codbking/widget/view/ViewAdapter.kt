@@ -13,6 +13,7 @@ import cn.jzvd.IView
 import cn.jzvd.MyJzvdStd
 import com.bumptech.glide.Glide
 import com.github.mikephil.charting.charts.LineChart
+import com.orhanobut.dialog.utils.DecimalUtils
 import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
 import com.ved.framework.utils.ScreenUtils
@@ -113,6 +114,53 @@ object ViewAdapter {
         try {
             setLeftValue(s)
             setRightValue(b)
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter(
+        value = ["format_key", "format_value"],
+        requireAll = false
+    )
+    @JvmStatic
+    fun View.sd(k: Int?, v: String?) {
+        try {
+            when(this){
+                is TextView ->{
+                    when(k){
+                        1 ->{
+                            var h = v
+                            if (h?.contains(":") == true) {
+                                val a = h.split(":")[0]
+                                val b = h.split(":")[1]
+                                if (b == "00") {
+                                    h = a
+                                } else if (b.startsWith("0")) {
+                                    val c = b.substring(1)
+                                    val d = c.toFloat() / 60
+                                    val e =
+                                        DecimalUtils.decimalFormat((a.toFloat() + d).toString())
+                                    h = if (e.endsWith("0")) {
+                                        e.substring(0, e.length - 1)
+                                    } else {
+                                        e
+                                    }
+                                } else {
+                                    val d = b.toFloat() / 60
+                                    val e =
+                                        DecimalUtils.decimalFormat((a.toFloat() + d).toString())
+                                    h = if (e.endsWith("0")) {
+                                        e.substring(0, e.length - 1)
+                                    } else {
+                                        e
+                                    }
+                                }
+                            }
+                            text = h
+                        }
+                    }
+                }
+            }
         } catch (_: Exception) {
         }
     }
