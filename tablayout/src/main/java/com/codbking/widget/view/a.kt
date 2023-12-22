@@ -24,7 +24,7 @@ import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter
 import org.sufficientlysecure.htmltextview.HtmlTextView
 import kotlin.math.roundToInt
 
-object ViewAdapter {
+object a {
     @BindingAdapter("ingestion_reference_type")
     @JvmStatic
     fun TextView.a(s: String?) {
