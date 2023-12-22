@@ -19,14 +19,9 @@
 
 package com.codbking.widget.view;
 
-/**
- * Range for visible items.
- */
 public class ItemsRange {
-	// First item number
 	private final int first;
 	
-	// Items count
 	private final int count;
 
 	/**
