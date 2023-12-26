@@ -50,12 +50,6 @@ android {
                 }
         }
     }*/
-
-    repositories {
-        flatDir {
-            dirs 'libs' //this way we can find the .aar file in libs folder
-        }
-    }
 }
 
 dependencies {
@@ -67,5 +61,4 @@ dependencies {
 //    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     compileOnly "com.github.Philjay:MPAndroidChart:v3.1.0"
     compileOnly 'com.zkk.view:ZkkRulerView:1.0.0'
-    implementation (name:'data-1.0',ext:'aar')
 }
