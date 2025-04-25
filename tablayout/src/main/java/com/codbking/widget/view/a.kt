@@ -1,11 +1,14 @@
 package com.codbking.widget.view
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.StrikethroughSpan
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import cn.jzvd.IVGroup
@@ -17,6 +20,7 @@ import com.orhanobut.dialog.utils.DecimalUtils
 import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
 import com.ved.framework.utils.ScreenUtils
+import com.ved.framework.utils.UIUtils
 import com.ved.framework.utils.Utils
 import com.ved.framework.utils.bland.code.StringUtils
 import com.zkk.view.rulerview.RulerView
@@ -384,7 +388,7 @@ object a {
     fun View.w(t: Int?) {
         try {
             t?.let {
-                val w = ScreenUtils.getScreenWidth(Utils.getContext())-DpiUtils.dip2px(Utils.getContext(),52)
+                val w = ScreenUtils.getScreenWidth()-DpiUtils.dip2px(Utils.getContext(),52)
                 val w1 = w*t/100
                 val lp: ViewGroup.LayoutParams = layoutParams
                 lp.width = w1
@@ -403,7 +407,7 @@ object a {
                     visibility = View.GONE
                 }else{
                     visibility = View.VISIBLE
-                    val w = ScreenUtils.getScreenWidth(Utils.getContext())-DpiUtils.dip2px(Utils.getContext(),52)
+                    val w = ScreenUtils.getScreenWidth()-DpiUtils.dip2px(Utils.getContext(),52)
                     val w1 = w*it/100-DpiUtils.dip2px(Utils.getContext(),20)
                     val layoutParams = layoutParams as ViewGroup.MarginLayoutParams
                     layoutParams.setMargins(w1,0,0,0)
@@ -528,6 +532,57 @@ object a {
                 }
             }?: kotlin.run {
                 text = "0"
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter("blood_status")
+    @JvmStatic
+    fun View.af(t: String?) {
+        try {
+            when(this){
+                is TextView ->{
+                    when(t){
+                        "1","离线" ->{
+                            text = "离线"
+                            background =  GradientDrawable().apply {
+                                orientation = GradientDrawable.Orientation.LEFT_RIGHT
+                                colors = intArrayOf(Color.parseColor("#999999"), Color.parseColor("#423F3F"))
+                                shape = GradientDrawable.RECTANGLE
+                                cornerRadius = 3f
+                            }
+                        }
+                        "2","在线" ->{
+                            text = "在线"
+                            background =  GradientDrawable().apply {
+                                orientation = GradientDrawable.Orientation.LEFT_RIGHT
+                                colors = intArrayOf(Color.parseColor("#85B8AB"), Color.parseColor("#1a9273"))
+                                shape = GradientDrawable.RECTANGLE
+                                cornerRadius = 3f
+                            }
+                        }
+                        else ->{
+                            text = "待激活"
+                            background =  GradientDrawable().apply {
+                                orientation = GradientDrawable.Orientation.LEFT_RIGHT
+                                colors = intArrayOf(Color.parseColor("#E3A89E"), Color.parseColor("#F82C0C"))
+                                shape = GradientDrawable.RECTANGLE
+                                cornerRadius = 3f
+                            }
+                        }
+                    }
+                }
+                else ->{
+                    visibility = when(t){
+                        "1","离线","2","在线" ->{
+                            View.VISIBLE
+                        }
+                        else ->{
+                            View.GONE
+                        }
+                    }
+                }
             }
         } catch (_: Exception) {
         }
