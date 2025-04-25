@@ -537,7 +537,7 @@ object a {
         }
     }
 
-    @BindingAdapter("blood_status")
+    @BindingAdapter("blood_state")
     @JvmStatic
     fun View.af(t: String?) {
         try {
@@ -550,7 +550,7 @@ object a {
                                 orientation = GradientDrawable.Orientation.LEFT_RIGHT
                                 colors = intArrayOf(Color.parseColor("#999999"), Color.parseColor("#423F3F"))
                                 shape = GradientDrawable.RECTANGLE
-                                cornerRadius = 3f
+                                cornerRadius = DpiUtils.dipFpx(Utils.getContext(),3)
                             }
                         }
                         "2","在线" ->{
@@ -559,7 +559,7 @@ object a {
                                 orientation = GradientDrawable.Orientation.LEFT_RIGHT
                                 colors = intArrayOf(Color.parseColor("#85B8AB"), Color.parseColor("#1a9273"))
                                 shape = GradientDrawable.RECTANGLE
-                                cornerRadius = 3f
+                                cornerRadius = DpiUtils.dipFpx(Utils.getContext(),3)
                             }
                         }
                         else ->{
@@ -568,7 +568,7 @@ object a {
                                 orientation = GradientDrawable.Orientation.LEFT_RIGHT
                                 colors = intArrayOf(Color.parseColor("#E3A89E"), Color.parseColor("#F82C0C"))
                                 shape = GradientDrawable.RECTANGLE
-                                cornerRadius = 3f
+                                cornerRadius = DpiUtils.dipFpx(Utils.getContext(),3)
                             }
                         }
                     }
