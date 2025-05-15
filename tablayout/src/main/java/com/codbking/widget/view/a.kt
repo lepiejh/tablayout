@@ -2,31 +2,19 @@ package com.codbking.widget.view
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.StrikethroughSpan
 import android.view.View
-import android.view.ViewGroup
 import android.webkit.WebView
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import cn.jzvd.IVGroup
 import cn.jzvd.IView
 import cn.jzvd.MyJzvdStd
-import com.bumptech.glide.Glide
 import com.github.mikephil.charting.charts.LineChart
-import com.orhanobut.dialog.utils.DecimalUtils
 import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
-import com.ved.framework.utils.ScreenUtils
-import com.ved.framework.utils.UIUtils
 import com.ved.framework.utils.Utils
-import com.ved.framework.utils.bland.code.StringUtils
 import com.zkk.view.rulerview.RulerView
-import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter
 import org.sufficientlysecure.htmltextview.HtmlTextView
-import kotlin.math.roundToInt
 
 object a {
     @BindingAdapter("ingestion_reference_type")
