@@ -10,8 +10,10 @@ import cn.jzvd.IVGroup
 import cn.jzvd.IView
 import cn.jzvd.MyJzvdStd
 import com.github.mikephil.charting.charts.LineChart
+import com.tbruyelle.donkor.cn.BatteryView
 import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
+import com.ved.framework.utils.StringUtils
 import com.ved.framework.utils.Utils
 import com.zkk.view.rulerview.RulerView
 import org.sufficientlysecure.htmltextview.HtmlTextView
@@ -19,7 +21,7 @@ import org.sufficientlysecure.htmltextview.HtmlTextView
 object a {
     @BindingAdapter("ingestion_reference_type")
     @JvmStatic
-    fun TextView.a(s: String?) {
+    internal fun TextView.a(s: String?) {
         try {
         } catch (_: Exception) {
         }
@@ -27,7 +29,7 @@ object a {
 
     @BindingAdapter("html_text")
     @JvmStatic
-    fun HtmlTextView.b(s: String?) {
+    internal fun HtmlTextView.b(s: String?) {
         try {
 
         } catch (_: Exception) {
@@ -36,7 +38,7 @@ object a {
 
     @BindingAdapter("web_html_text")
     @JvmStatic
-    fun WebView.b(s: String?) {
+    internal fun WebView.b(s: String?) {
         try {
             loadDataWithBaseURL(null, "<html>" + "<head>" +
                     "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"> " +
@@ -56,7 +58,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun MyJzvdStd.c(s: String?, b: String?) {
+    internal fun MyJzvdStd.c(s: String?, b: String?) {
         try {
 
         } catch (_: Exception) {
@@ -68,7 +70,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun IView.d(s: String?, b: String?) {
+    internal fun View.d(s: String?, b: String?) {
         try {
 
         } catch (_: Exception) {
@@ -80,7 +82,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun View.sd(k: Int?, v: String?) {
+    internal fun View.sd(k: Int?, v: String?) {
         try {
         } catch (_: Exception) {
         }
@@ -91,7 +93,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun IView.e(s: Int?, b: String?) {
+    internal fun IView.e(s: Int?, b: String?) {
         try {
 
         } catch (_: Exception) {
@@ -103,7 +105,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun LineChart.f(hasWeek: Int?, hasBubble:Int?) {
+    internal fun LineChart.f(hasWeek: Int?, hasBubble:Int?) {
         try {
 
         } catch (_: Exception) {
@@ -115,7 +117,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun IVGroup.g(avg: String?, proportion:String?, fluctuate:String?, reachts:String?, high:String?, low:String?, normal:String?) {
+    internal fun IVGroup.g(avg: String?, proportion:String?, fluctuate:String?, reachts:String?, high:String?, low:String?, normal:String?) {
         try {
         } catch (_: Exception) {
         }
@@ -126,7 +128,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun IVGroup.h(sleepLength: String?, length:String?) {
+    internal fun IVGroup.h(sleepLength: String?, length:String?) {
         try {
         } catch (_: Exception) {
         }
@@ -134,15 +136,20 @@ object a {
 
     @BindingAdapter("fat_values")
     @JvmStatic
-    fun IVGroup.i(fat: String?) {
+    internal fun View.i(fat: String?) {
         try {
+            when(this){
+                is BatteryView ->{
+                    power = StringUtils.parseInt(fat)
+                }
+            }
         } catch (_: Exception) {
         }
     }
 
     @BindingAdapter("diet_values")
     @JvmStatic
-    fun IVGroup.j(diet: String?) {
+    internal fun IVGroup.j(diet: String?) {
         try {
         } catch (_: Exception) {
         }
@@ -153,7 +160,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun TextView.k(value:String?,unit: String?) {
+    internal fun TextView.k(value:String?,unit: String?) {
         try {
 
         } catch (_: Exception) {
@@ -162,7 +169,7 @@ object a {
 
     @BindingAdapter("card_weight")
     @JvmStatic
-    fun TextView.l(weight: String?) {
+    internal fun TextView.l(weight: String?) {
         try {
 
         } catch (_: Exception) {
@@ -171,7 +178,7 @@ object a {
 
     @BindingAdapter("plan_text_one")
     @JvmStatic
-    fun TextView.m(t: String?) {
+    internal fun TextView.m(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -180,7 +187,7 @@ object a {
 
     @BindingAdapter("plan_text_tow")
     @JvmStatic
-    fun TextView.n(t: String?) {
+    internal fun TextView.n(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -189,7 +196,7 @@ object a {
 
     @BindingAdapter("plan_text_three")
     @JvmStatic
-    fun TextView.k(t: String?) {
+    internal fun TextView.k(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -198,7 +205,7 @@ object a {
 
     @BindingAdapter("plan_text_four")
     @JvmStatic
-    fun TextView.r(t: String?) {
+    internal fun TextView.r(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -207,7 +214,7 @@ object a {
 
     @BindingAdapter("plan_problem_one")
     @JvmStatic
-    fun TextView.u(t: String?) {
+    internal fun TextView.u(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -216,7 +223,7 @@ object a {
 
     @BindingAdapter("plan_problem_tow")
     @JvmStatic
-    fun TextView.y(t: String?) {
+    internal fun TextView.y(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -225,7 +232,7 @@ object a {
 
     @BindingAdapter("plan_price")
     @JvmStatic
-    fun TextView.t(t: String?) {
+    internal fun TextView.t(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -234,7 +241,7 @@ object a {
 
     @BindingAdapter("width_run_progress")
     @JvmStatic
-    fun View.w(t: Int?) {
+    internal fun View.w(t: Int?) {
         try {
 
         } catch (_: Exception) {
@@ -243,7 +250,7 @@ object a {
 
     @BindingAdapter("left_run_progress")
     @JvmStatic
-    fun View.q(t: Int?) {
+    internal fun View.q(t: Int?) {
         try {
 
         } catch (_: Exception) {
@@ -255,7 +262,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun RulerView.ab(a: String?, b:String?, g:String?, v:String?) {
+    internal fun RulerView.ab(a: String?, b:String?, g:String?, v:String?) {
         try {
 
         } catch (_: Exception) {
@@ -267,7 +274,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun RulerView.ac(
+    internal fun RulerView.ac(
         a: BindingCommand<String?>?
     ) {
         try {
@@ -281,7 +288,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun TextView.ad(a: String?, b: String?) {
+    internal fun TextView.ad(a: String?, b: String?) {
         try {
 
         } catch (_: Exception) {
@@ -293,7 +300,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    fun TextView.bd(a: String?, b: String?) {
+    internal fun TextView.bd(a: String?, b: String?) {
         try {
 
         } catch (_: Exception) {
@@ -302,7 +309,7 @@ object a {
 
     @BindingAdapter("text_length")
     @JvmStatic
-    fun TextView.ae(t: String?) {
+    internal fun TextView.ae(t: String?) {
         try {
 
         } catch (_: Exception) {
@@ -311,7 +318,7 @@ object a {
 
     @BindingAdapter("blood_state")
     @JvmStatic
-    fun View.af(t: String?) {
+    internal fun View.af(t: String?) {
         try {
             when(this){
                 is TextView ->{
