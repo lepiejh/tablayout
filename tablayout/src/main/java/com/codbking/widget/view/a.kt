@@ -144,7 +144,15 @@ object a {
                     power = StringUtils.parseInt(fat)
                 }
                 is WifiSignalView ->{
-                    updateSignalStrength(StringUtils.parseInt(fat))
+                    when(StringUtils.parseInt(fat)){
+                        -100 ->{
+                            visibility = View.GONE
+                        }
+                        else ->{
+                            visibility = View.VISIBLE
+                            updateSignalStrength(StringUtils.parseInt(fat))
+                        }
+                    }
                 }
             }
         } catch (_: Exception) {
