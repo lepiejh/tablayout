@@ -55,11 +55,17 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compileOnly 'com.github.lepiejh:arc:v1.2.11'
-    compileOnly 'com.github.lepiejh:android-mvvm:v0.0.116'
+    compileOnly 'com.github.lepiejh:android-mvvm:v0.0.215'
     compileOnly 'androidx.constraintlayout:constraintlayout:2.1.4'
     compileOnly 'com.google.android.material:material:1.4.+'
 //    implementation 'androidx.appcompat:appcompat:1.5.1'
 //    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
 //    compileOnly "com.github.Philjay:MPAndroidChart:v3.1.0"
     compileOnly 'com.zkk.view:ZkkRulerView:1.0.0'
+    compileOnly 'com.github.lepiejh:android-play:v1.0.8'
+    compileOnly 'com.github.lepiejh:android-update:v1.0.1'
+    compileOnly 'com.github.lepiejh:html:v1.1.0'
+    compileOnly 'com.github.lepiejh:android-chat:v1.0.2'
+    compileOnly 'com.github.lepiejh:android-recycleview:v1.0.1'
+    compileOnly 'com.github.lepiejh:calendarview:v1.0.0'
 }

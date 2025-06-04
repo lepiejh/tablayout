@@ -9,8 +9,9 @@ import androidx.databinding.BindingAdapter
 import cn.jzvd.IVGroup
 import cn.jzvd.IView
 import cn.jzvd.MyJzvdStd
+import com.donkor.cn.BatteryView
 import com.github.mikephil.charting.charts.LineChart
-import com.tbruyelle.donkor.cn.BatteryView
+import com.orhanobut.dialog.view.WifiSignalView
 import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
 import com.ved.framework.utils.StringUtils
@@ -141,6 +142,9 @@ object a {
             when(this){
                 is BatteryView ->{
                     power = StringUtils.parseInt(fat)
+                }
+                is WifiSignalView ->{
+                    updateSignalStrength(StringUtils.parseInt(fat))
                 }
             }
         } catch (_: Exception) {
