@@ -3,6 +3,7 @@ package com.codbking.widget.view
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
+import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -425,6 +426,54 @@ object a {
                     setTextColor(UIUtils.getColor(R.color.b))
                 }
             }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter("view_width")
+    @JvmStatic
+    internal fun View.ah(i: Int?) {
+        try {
+            val params = layoutParams
+            when (i) {
+                0 -> {
+                    params.width = 0
+                }
+                ViewGroup.LayoutParams.MATCH_PARENT ->{
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT
+                }
+                ViewGroup.LayoutParams.WRAP_CONTENT ->{
+                    params.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                }
+                else ->{
+                    params.width = DpiUtils.dip2px(Utils.getContext(),StringUtils.parseInt(i))
+                }
+            }
+            layoutParams = params
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter("view_height")
+    @JvmStatic
+    internal fun View.ai(i: Int?) {
+        try {
+            val params = layoutParams
+            when (i) {
+                0 -> {
+                    params.height = 0
+                }
+                ViewGroup.LayoutParams.MATCH_PARENT ->{
+                    params.height = ViewGroup.LayoutParams.MATCH_PARENT
+                }
+                ViewGroup.LayoutParams.WRAP_CONTENT ->{
+                    params.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                }
+                else ->{
+                    params.height = DpiUtils.dip2px(Utils.getContext(),StringUtils.parseInt(i))
+                }
+            }
+            layoutParams = params
         } catch (_: Exception) {
         }
     }
