@@ -154,6 +154,19 @@ object a {
                         }
                     }
                 }
+                is TextView ->{
+                    text = fat
+                    val f = StringUtils.parseInt(fat)
+                    if (f < 30) {
+                        setTextColor(Color.RED)
+                    }
+                    if (f in 30..49) {
+                        setTextColor(Color.BLUE)
+                    }
+                    if (f >= 50) {
+                        setTextColor(Color.GREEN)
+                    }
+                }
             }
         } catch (_: Exception) {
         }
