@@ -12,7 +12,5 @@
     <color name="pickerview_bgColor_default">#FFFFFFFF</color>
     <color name="pickerview_bgColor2_default">#121314</color>
     <color name="pickerview_bgColor3_default">#ff0000</color>
-    <color name="a">#656262</color>
-    <color name="b">#ffffff</color>
 
 </resources>
