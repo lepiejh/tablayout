@@ -160,10 +160,10 @@ object a {
                 is TextView ->{
                     text = "${fat}%"
                     val f = StringUtils.parseInt(fat)
-                    if (f < 30) {
+                    if (f <= 20) {
                         setTextColor(Color.RED)
                     }
-                    if (f in 30..49) {
+                    if (f in 21..49) {
                         setTextColor(Color.BLUE)
                     }
                     if (f >= 50) {
