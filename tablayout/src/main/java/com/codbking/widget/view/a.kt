@@ -425,6 +425,16 @@ object a {
                     background = UIUtils.getDrawable(R.drawable.h)
                     setTextColor(UIUtils.getColor(R.color.b))
                 }
+                3 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.i)
+                    setTextColor(UIUtils.getColor(R.color.b))
+                }
+                4 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.l)
+                    setTextColor(UIUtils.getColor(R.color.b))
+                }
             }
         } catch (_: Exception) {
         }
