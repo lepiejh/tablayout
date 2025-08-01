@@ -19,7 +19,6 @@ import com.ved.framework.utils.DpiUtils
 import com.ved.framework.utils.StringUtils
 import com.ved.framework.utils.UIUtils
 import com.ved.framework.utils.Utils
-import com.zkk.view.rulerview.RulerView
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
 object a {
@@ -290,7 +289,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    internal fun RulerView.ab(a: String?, b:String?, g:String?, v:String?) {
+    internal fun View.ab(a: String?, b:String?, g:String?, v:String?) {
         try {
 
         } catch (_: Exception) {
@@ -302,7 +301,7 @@ object a {
         requireAll = false
     )
     @JvmStatic
-    internal fun RulerView.ac(
+    internal fun View.ac(
         a: BindingCommand<String?>?
     ) {
         try {
@@ -417,12 +416,12 @@ object a {
                 }
                 1 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.g)
+                    background = UIUtils.getDrawable(R.drawable.n)
                     setTextColor(UIUtils.getColor(R.color.b))
                 }
                 2 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.h)
+                    background = UIUtils.getDrawable(R.drawable.p)
                     setTextColor(UIUtils.getColor(R.color.b))
                 }
                 3 ->{
