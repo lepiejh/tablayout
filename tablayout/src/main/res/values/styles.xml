@@ -5,8 +5,8 @@
 
     //animal
     <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/abc_slide_in_bottom</item>
-        <item name="android:windowExitAnimation">@anim/abc_slide_out_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/pickerview_slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/pickerview_slide_out_bottom</item>
     </style>
 
 
