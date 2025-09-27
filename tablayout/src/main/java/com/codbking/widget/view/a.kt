@@ -10,12 +10,14 @@ import androidx.databinding.BindingAdapter
 import cn.jzvd.IVGroup
 import cn.jzvd.IView
 import cn.jzvd.MyJzvdStd
+import com.androidkun.xtablayout.R
 import com.donkor.cn.BatteryView
 import com.github.mikephil.charting.charts.LineChart
 import com.orhanobut.dialog.view.WifiSignalView
 import com.ved.framework.binding.command.BindingCommand
 import com.ved.framework.utils.DpiUtils
 import com.ved.framework.utils.StringUtils
+import com.ved.framework.utils.UIUtils
 import com.ved.framework.utils.Utils
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
@@ -386,6 +388,51 @@ object a {
                             View.GONE
                         }
                     }
+                }
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    @BindingAdapter("button_status")
+    @JvmStatic
+    internal fun TextView.ag(status: Int?) {
+        try {
+            when(status){
+                -2 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.b)
+                    setTextColor(UIUtils.getColor(R.color.b))
+                }
+                -1 ->{
+                    isEnabled = false
+                    background = UIUtils.getDrawable(R.drawable.e)
+                    setTextColor(UIUtils.getColor(R.color.a))
+                }
+                0 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.a)
+                    setTextColor(UIUtils.getColor(R.color.b))
+                }
+                1 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.n)
+                    setTextColor(UIUtils.getColor(R.color.b))
+                }
+                2 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.p)
+                    setTextColor(UIUtils.getColor(R.color.b))
+                }
+                3 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.i)
+                    setTextColor(UIUtils.getColor(R.color.b))
+                }
+                4 ->{
+                    isEnabled = true
+                    background = UIUtils.getDrawable(R.drawable.l)
+                    setTextColor(UIUtils.getColor(R.color.b))
                 }
             }
         } catch (_: Exception) {
