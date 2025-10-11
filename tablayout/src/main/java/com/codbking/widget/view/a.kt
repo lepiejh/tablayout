@@ -156,17 +156,17 @@ object a {
                         }
                     }
                 }
-                is TextView ->{
-                    text = "${fat}%"
-                    val f = StringUtils.parseInt(fat)
-                    if (f <= 40) {
-                        setTextColor(Color.RED)
-                    }
-                    if (f in 41..69) {
-                        setTextColor(Color.BLUE)
-                    }
-                    if (f >= 70) {
-                        setTextColor(Color.GREEN)
+                is TextView -> {
+                    // 处理空值情况
+                    val fatValue = if (fat.isNullOrEmpty()) "0" else fat
+                    text = "${fatValue}%"
+
+                    val f = StringUtils.parseInt(fatValue)
+                    when {
+                        f < 0 -> setTextColor(Color.GRAY)    // 处理异常值
+                        f <= 40 -> setTextColor(Color.RED)
+                        f <= 69 -> setTextColor(Color.BLUE)  // 41-69
+                        else -> setTextColor(Color.GREEN)    // >= 70
                     }
                 }
             }
