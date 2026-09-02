@@ -14,11 +14,12 @@ import com.androidkun.xtablayout.R
 import com.donkor.cn.BatteryView
 import com.github.mikephil.charting.charts.LineChart
 import com.orhanobut.dialog.view.WifiSignalView
-import com.ved.framework.binding.command.BindingCommand
-import com.ved.framework.utils.DpiUtils
+import com.ved.framework.command.BindingCommand
 import com.ved.framework.utils.StringUtils
-import com.ved.framework.utils.UIUtils
 import com.ved.framework.utils.Utils
+import com.ved.framework.utils.bland.code.ColorUtils
+import com.ved.framework.utils.bland.code.ResourceUtils
+import com.ved.framework.utils.bland.code.SizeUtils
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
 object a {
@@ -356,7 +357,7 @@ object a {
                                 orientation = GradientDrawable.Orientation.LEFT_RIGHT
                                 colors = intArrayOf(Color.parseColor("#999999"), Color.parseColor("#423F3F"))
                                 shape = GradientDrawable.RECTANGLE
-                                cornerRadius = DpiUtils.dipFpx(Utils.getContext(),3)
+                                cornerRadius = SizeUtils.dp2px(3f).toFloat()
                             }
                         }
                         "2","在线" ->{
@@ -365,7 +366,7 @@ object a {
                                 orientation = GradientDrawable.Orientation.LEFT_RIGHT
                                 colors = intArrayOf(Color.parseColor("#85B8AB"), Color.parseColor("#1a9273"))
                                 shape = GradientDrawable.RECTANGLE
-                                cornerRadius = DpiUtils.dipFpx(Utils.getContext(),3)
+                                cornerRadius = SizeUtils.dp2px(3f).toFloat()
                             }
                         }
                         else ->{
@@ -374,7 +375,7 @@ object a {
                                 orientation = GradientDrawable.Orientation.LEFT_RIGHT
                                 colors = intArrayOf(Color.parseColor("#E3A89E"), Color.parseColor("#F82C0C"))
                                 shape = GradientDrawable.RECTANGLE
-                                cornerRadius = DpiUtils.dipFpx(Utils.getContext(),3)
+                                cornerRadius = SizeUtils.dp2px(3f).toFloat()
                             }
                         }
                     }
@@ -401,43 +402,43 @@ object a {
             when(status){
                 -2 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.b)
-                    setTextColor(UIUtils.getColor(R.color.b))
+                    background = ResourceUtils.getDrawable(R.drawable.b)
+                    setTextColor(ColorUtils.getColor(R.color.b))
                 }
                 -1 ->{
                     isEnabled = false
-                    background = UIUtils.getDrawable(R.drawable.e)
-                    setTextColor(UIUtils.getColor(R.color.a))
+                    background = ResourceUtils.getDrawable(R.drawable.e)
+                    setTextColor(ColorUtils.getColor(R.color.a))
                 }
                 0 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.a)
-                    setTextColor(UIUtils.getColor(R.color.b))
+                    background = ResourceUtils.getDrawable(R.drawable.a)
+                    setTextColor(ColorUtils.getColor(R.color.b))
                 }
                 1 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.n)
-                    setTextColor(UIUtils.getColor(R.color.b))
+                    background = ResourceUtils.getDrawable(R.drawable.n)
+                    setTextColor(ColorUtils.getColor(R.color.b))
                 }
                 2 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.p)
-                    setTextColor(UIUtils.getColor(R.color.b))
+                    background = ResourceUtils.getDrawable(R.drawable.p)
+                    setTextColor(ColorUtils.getColor(R.color.b))
                 }
                 3 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.i)
-                    setTextColor(UIUtils.getColor(R.color.b))
+                    background = ResourceUtils.getDrawable(R.drawable.i)
+                    setTextColor(ColorUtils.getColor(R.color.b))
                 }
                 4 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.l)
-                    setTextColor(UIUtils.getColor(R.color.b))
+                    background = ResourceUtils.getDrawable(R.drawable.l)
+                    setTextColor(ColorUtils.getColor(R.color.b))
                 }
                 5 ->{
                     isEnabled = true
-                    background = UIUtils.getDrawable(R.drawable.q)
-                    setTextColor(UIUtils.getColor(R.color.b))
+                    background = ResourceUtils.getDrawable(R.drawable.q)
+                    setTextColor(ColorUtils.getColor(R.color.b))
                 }
             }
         } catch (_: Exception) {
@@ -460,7 +461,7 @@ object a {
                     params.width = ViewGroup.LayoutParams.WRAP_CONTENT
                 }
                 else ->{
-                    params.width = DpiUtils.dip2px(Utils.getContext(),StringUtils.parseInt(i))
+                    params.width = SizeUtils.dp2px(StringUtils.parseFloat(i))
                 }
             }
             layoutParams = params
@@ -484,7 +485,7 @@ object a {
                     params.height = ViewGroup.LayoutParams.WRAP_CONTENT
                 }
                 else ->{
-                    params.height = DpiUtils.dip2px(Utils.getContext(),StringUtils.parseInt(i))
+                    params.height = SizeUtils.dp2px(StringUtils.parseFloat(i))
                 }
             }
             layoutParams = params
