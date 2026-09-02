@@ -16,7 +16,6 @@ import com.github.mikephil.charting.charts.LineChart
 import com.orhanobut.dialog.view.WifiSignalView
 import com.ved.framework.command.BindingCommand
 import com.ved.framework.utils.StringUtils
-import com.ved.framework.utils.Utils
 import com.ved.framework.utils.bland.code.ColorUtils
 import com.ved.framework.utils.bland.code.ResourceUtils
 import com.ved.framework.utils.bland.code.SizeUtils
