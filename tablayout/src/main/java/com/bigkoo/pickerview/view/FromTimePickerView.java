@@ -12,6 +12,7 @@ import com.androidkun.xtablayout.R;
 import com.bigkoo.pickerview.configure.PickerOptions;
 import com.bigkoo.pickerview.listener.ISelectTimeCallback;
 import com.bigkoo.pickerview.utils.StringUtils;
+import com.ved.framework.utils.KLog;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -109,7 +110,7 @@ public class FromTimePickerView extends BasePickerView implements View.OnClickLi
                         Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
                         mPickerOptions.timeSelectChangeListener.onTimeSelectChanged(date);
                     } catch (ParseException e) {
-                        e.printStackTrace();
+                        KLog.e(e.getMessage());
                     }
                 }
             });
@@ -253,13 +254,13 @@ public class FromTimePickerView extends BasePickerView implements View.OnClickLi
                 try {
                     d = StringUtils.parseToData(t);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    KLog.e(e.getMessage());
                     d = t;
                 }
                 Date date = WheelTime.dateFormat.parse(d);
                 mPickerOptions.timeSelectListener.onTimeSelect(d,date, clickView);
             } catch (ParseException e) {
-                e.printStackTrace();
+                KLog.e(e.getMessage());
             }
         }
     }
@@ -298,7 +299,7 @@ public class FromTimePickerView extends BasePickerView implements View.OnClickLi
                     mPickerOptions.label_hours, mPickerOptions.label_minutes, mPickerOptions.label_seconds);
             wheelTime.setPicker(year, month, day, hours, minute, seconds);
         } catch (ParseException e) {
-            e.printStackTrace();
+            KLog.e(e.getMessage());
         }
     }
 

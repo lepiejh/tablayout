@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.androidkun.xtablayout.R;
 import com.codbking.widget.bean.DateType;
+import com.ved.framework.utils.KLog;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -152,7 +153,7 @@ public class DatePickDialog extends Dialog implements OnChangeLisener {
                 messge = new SimpleDateFormat("yyyy-MM-dd").format(date);
                 messges = new SimpleDateFormat("yyyy-MM-dd").format(dates);
             } catch (Exception e) {
-                e.printStackTrace();
+                KLog.e(e.getMessage());
             }
             messgeTv.setText(messge +" - " +messges);
         }

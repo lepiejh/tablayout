@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.ved.framework.utils.KLog;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -84,7 +86,7 @@ class DateUtils {
             Date date=format.parse("2016-12-15 12");
             System.out.println(getHour(date));
         } catch (ParseException e) {
-            e.printStackTrace();
+            KLog.e(e.getMessage());
         }
     }
 

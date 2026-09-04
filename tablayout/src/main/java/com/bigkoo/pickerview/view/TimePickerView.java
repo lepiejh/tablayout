@@ -111,7 +111,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
                         Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
                         mPickerOptions.timeSelectChangeListener.onTimeSelectChanged(date);
                     } catch (ParseException e) {
-                        e.printStackTrace();
+                        KLog.e(e.getMessage());
                     }
                 }
             });
@@ -256,14 +256,14 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
                 try {
                     d = StringUtils.parseToData(t);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    KLog.e(e.getMessage());
                     d = t;
                 }
                 KLog.i("TimePickerBuilder","wheelTime.getTime() d : "+d);
                 Date date = WheelTime.dateFormat.parse(d);
                 mPickerOptions.timeSelectListener.onTimeSelect(d,date, clickView);
             } catch (ParseException e) {
-                e.printStackTrace();
+                KLog.e(e.getMessage());
             }
         }
     }
@@ -302,7 +302,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
                     mPickerOptions.label_hours, mPickerOptions.label_minutes, mPickerOptions.label_seconds);
             wheelTime.setPicker(year, month, day, hours, minute, seconds);
         } catch (ParseException e) {
-            e.printStackTrace();
+            KLog.e(e.getMessage());
         }
     }
 

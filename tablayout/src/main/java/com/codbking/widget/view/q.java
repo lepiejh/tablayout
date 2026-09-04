@@ -15,6 +15,7 @@ import com.ved.framework.command.BindingCommand;
 import com.ved.framework.listener.OnViewGlobalLayoutListener;
 import com.ved.framework.utils.CalendarUtil;
 import com.ved.framework.utils.CorpseUtils;
+import com.ved.framework.utils.KLog;
 import com.ved.framework.utils.StringUtils;
 import com.ved.framework.utils.TimeUtils;
 import com.ved.framework.utils.ViewBindingUtils;
@@ -110,7 +111,7 @@ public class q {
         try {
             RxView.visibility(view).accept(visibility);
         } catch (Throwable e) {
-            e.printStackTrace();
+            KLog.e(e.getMessage());
         }
     }
 
