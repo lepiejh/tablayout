@@ -39,8 +39,9 @@
 # 1. Public API - KEEP (the library is published as an AAR, consumers call it)
 #    Public classes are kept from removal AND renaming, together with their
 #    public constructors / fields / methods.
-#    Everything that is NOT public (private / protected / package-private
-#    classes, fields, methods and inner classes) is NOT matched -> obfuscated.
+#    Protected members are kept separately below (section 1b).
+#    private / package-private members and non-public classes are NOT matched
+#    -> obfuscated.
 # ---------------------------------------------------------------------------
 # Scoped per package (instead of one universal `**`) so each rule stays under
 # the IDE "overly broad keep rule" (>100 classes) inspection threshold. All of
@@ -72,10 +73,37 @@
     public <methods>;
 }
 
-# NOTE: private / protected / package-private members and nested classes are
-# intentionally NOT kept, so R8 obfuscates them. Only the public API above
-# keeps its names. Local-variable names are stripped automatically because
-# LocalVariableTable is not listed in -keepattributes.
+# ---------------------------------------------------------------------------
+# 1b. Protected members - KEEP (subclasses in consumer apps rely on them)
+#     Applies to ALL classes in the library (public or not), per requirement.
+#     -keepclassmembers keeps the member names (and prevents their removal)
+#     without forcing the enclosing class to be kept.
+# ---------------------------------------------------------------------------
+-keepclassmembers class com.androidkun.xtablayout.** {
+    protected <fields>;
+    protected <methods>;
+}
+-keepclassmembers class com.bigkoo.pickerview.** {
+    protected <fields>;
+    protected <methods>;
+}
+-keepclassmembers class com.codbking.widget.** {
+    protected <fields>;
+    protected <methods>;
+}
+-keepclassmembers class com.contrarywind.** {
+    protected <fields>;
+    protected <methods>;
+}
+-keepclassmembers class com.utils.** {
+    protected <fields>;
+    protected <methods>;
+}
+
+# NOTE: private / package-private members and non-public classes are
+# intentionally NOT kept, so R8 obfuscates them. Public (section 1) and
+# protected (section 1b) keep their names. Local-variable names are stripped
+# automatically because LocalVariableTable is not listed in -keepattributes.
 
 
 # ---------------------------------------------------------------------------
