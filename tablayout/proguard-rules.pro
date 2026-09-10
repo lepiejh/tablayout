@@ -39,21 +39,43 @@
 # 1. Public API - KEEP (the library is published as an AAR, consumers call it)
 #    Public classes are kept from removal AND renaming, together with their
 #    public constructors / fields / methods.
-#    Protected and package-private members are NOT matched -> they get renamed.
+#    Everything that is NOT public (private / protected / package-private
+#    classes, fields, methods and inner classes) is NOT matched -> obfuscated.
 # ---------------------------------------------------------------------------
--keep public class ** {
+# Scoped per package (instead of one universal `**`) so each rule stays under
+# the IDE "overly broad keep rule" (>100 classes) inspection threshold. All of
+# the library's program classes live in these five packages, so this is
+# functionally identical to `**` for this module.
+-keep public class com.androidkun.xtablayout.** {
+    public <init>(...);
+    public <fields>;
+    public <methods>;
+}
+-keep public class com.bigkoo.pickerview.** {
+    public <init>(...);
+    public <fields>;
+    public <methods>;
+}
+-keep public class com.codbking.widget.** {
+    public <init>(...);
+    public <fields>;
+    public <methods>;
+}
+-keep public class com.contrarywind.** {
+    public <init>(...);
+    public <fields>;
+    public <methods>;
+}
+-keep public class com.utils.** {
     public <init>(...);
     public <fields>;
     public <methods>;
 }
 
-# Private members are kept un-obfuscated as requested. -keepclassmembers only
-# prevents renaming (unused private members may still be shrunk away).
--keepclassmembers public class ** {
-    private <init>(...);
-    private <fields>;
-    private <methods>;
-}
+# NOTE: private / protected / package-private members and nested classes are
+# intentionally NOT kept, so R8 obfuscates them. Only the public API above
+# keeps its names. Local-variable names are stripped automatically because
+# LocalVariableTable is not listed in -keepattributes.
 
 
 # ---------------------------------------------------------------------------
