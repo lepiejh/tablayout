@@ -7,19 +7,14 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import cn.jzvd.IVGroup
-import cn.jzvd.IView
-import cn.jzvd.MyJzvdStd
 import com.androidkun.xtablayout.R
 import com.donkor.cn.BatteryView
-import com.github.mikephil.charting.charts.LineChart
 import com.orhanobut.dialog.view.WifiSignalView
 import com.ved.framework.command.BindingCommand
 import com.ved.framework.utils.StringUtils
 import com.ved.framework.utils.bland.code.ColorUtils
 import com.ved.framework.utils.bland.code.ResourceUtils
 import com.ved.framework.utils.bland.code.SizeUtils
-import org.sufficientlysecure.htmltextview.HtmlTextView
 
 object a {
     @BindingAdapter("ingestion_reference_type")
@@ -30,14 +25,14 @@ object a {
         }
     }
 
-    @BindingAdapter("html_text")
-    @JvmStatic
-    internal fun HtmlTextView.b(s: String?) {
-        try {
-
-        } catch (_: Exception) {
-        }
-    }
+//    @BindingAdapter("html_text")
+//    @JvmStatic
+//    internal fun HtmlTextView.b(s: String?) {
+//        try {
+//
+//        } catch (_: Exception) {
+//        }
+//    }
 
     @BindingAdapter("web_html_text")
     @JvmStatic
@@ -56,17 +51,17 @@ object a {
         }
     }
 
-    @BindingAdapter(
-        value = ["audio_image_url", "audio_url"],
-        requireAll = false
-    )
-    @JvmStatic
-    internal fun MyJzvdStd.c(s: String?, b: String?) {
-        try {
-
-        } catch (_: Exception) {
-        }
-    }
+//    @BindingAdapter(
+//        value = ["audio_image_url", "audio_url"],
+//        requireAll = false
+//    )
+//    @JvmStatic
+//    internal fun MyJzvdStd.c(s: String?, b: String?) {
+//        try {
+//
+//        } catch (_: Exception) {
+//        }
+//    }
 
     @BindingAdapter(
         value = ["leftValue", "rightValue"],
@@ -91,51 +86,51 @@ object a {
         }
     }
 
-    @BindingAdapter(
-        value = ["progressValue", "foodIngestion"],
-        requireAll = false
-    )
-    @JvmStatic
-    internal fun IView.e(s: Int?, b: String?) {
-        try {
-
-        } catch (_: Exception) {
-        }
-    }
-
-    @BindingAdapter(
-        value = ["hasWeek", "hasBubble"],
-        requireAll = false
-    )
-    @JvmStatic
-    internal fun LineChart.f(hasWeek: Int?, hasBubble:Int?) {
-        try {
-
-        } catch (_: Exception) {
-        }
-    }
-
-    @BindingAdapter(
-        value = ["blood_sugar_avg", "blood_sugar_proportion","blood_sugar_fluctuate","blood_sugar_react","blood_sugar_high","blood_sugar_low","blood_sugar_normal"],
-        requireAll = false
-    )
-    @JvmStatic
-    internal fun IVGroup.g(avg: String?, proportion:String?, fluctuate:String?, reachts:String?, high:String?, low:String?, normal:String?) {
-        try {
-        } catch (_: Exception) {
-        }
-    }
-
-    @BindingAdapter(
-        value = ["sleep_length", "sleep_lie_length"],
-        requireAll = false
-    )
-    @JvmStatic
-    internal fun IVGroup.h(sleepLength: String?, length:String?) {
-        try {
-        } catch (_: Exception) {
-        }
-    }
+//    @BindingAdapter(
+//        value = ["progressValue", "foodIngestion"],
+//        requireAll = false
+//    )
+//    @JvmStatic
+//    internal fun IView.e(s: Int?, b: String?) {
+//        try {
+//
+//        } catch (_: Exception) {
+//        }
+//    }
+//
+//    @BindingAdapter(
+//        value = ["hasWeek", "hasBubble"],
+//        requireAll = false
+//    )
+//    @JvmStatic
+//    internal fun LineChart.f(hasWeek: Int?, hasBubble:Int?) {
+//        try {
+//
+//        } catch (_: Exception) {
+//        }
+//    }
+//
+//    @BindingAdapter(
+//        value = ["blood_sugar_avg", "blood_sugar_proportion","blood_sugar_fluctuate","blood_sugar_react","blood_sugar_high","blood_sugar_low","blood_sugar_normal"],
+//        requireAll = false
+//    )
+//    @JvmStatic
+//    internal fun IVGroup.g(avg: String?, proportion:String?, fluctuate:String?, reachts:String?, high:String?, low:String?, normal:String?) {
+//        try {
+//        } catch (_: Exception) {
+//        }
+//    }
+//
+//    @BindingAdapter(
+//        value = ["sleep_length", "sleep_lie_length"],
+//        requireAll = false
+//    )
+//    @JvmStatic
+//    internal fun IVGroup.h(sleepLength: String?, length:String?) {
+//        try {
+//        } catch (_: Exception) {
+//        }
+//    }
 
     @BindingAdapter("fat_values")
     @JvmStatic
@@ -174,13 +169,13 @@ object a {
         }
     }
 
-    @BindingAdapter("diet_values")
-    @JvmStatic
-    internal fun IVGroup.j(diet: String?) {
-        try {
-        } catch (_: Exception) {
-        }
-    }
+//    @BindingAdapter("diet_values")
+//    @JvmStatic
+//    internal fun IVGroup.j(diet: String?) {
+//        try {
+//        } catch (_: Exception) {
+//        }
+//    }
 
     @BindingAdapter(
         value = ["card_value", "card_unit"],
